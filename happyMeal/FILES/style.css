@@ -1,4 +1,9 @@
 /* font Global*/
+
+p {
+    color: #FFF9EB;
+    text-align: center;
+}
 .custom-h1 {
     color: #FFF9EB;
     font-family: "Oswald", sans-serif;
@@ -25,8 +30,7 @@ svg {
 .fav {
     color: yellow;
     position: relative;
-    right: -93%;
-    margin-top: 3%;
+    left: 102%;
     cursor: pointer;
 }
 .fav:hover {
@@ -36,30 +40,24 @@ svg {
 }
 .chevron {
     color: #FFF9EB;
-    position: relative;
-    bottom: 0%;
-    left: 91%;
+    position: absolute;
+    bottom: 0;
+    right: 1%;
     cursor: pointer;
 }
-.click {
+.chevron:hover {
     background-color: #ff8f33;
     border-radius: 50px;
-    transition: background-color 2s ease-out, transform 2s ease-out;
-    transform: rotate(180deg);
+    transition: background-color 0.25s ease-out;
+    animation: rotate 0.5s linear;
 }
-
-#toggle {
-    background-color: #ff8f33;
-    border-radius: 50px;
-    transition: background-color 0.25s ease-out, transform 0.5s linear;
-}
-
-#toggle.click {
-    transform: rotate(180deg);
-}
-
-.mostra {
-    display: block !important;
+@keyframes rotate {
+    from {
+        transform: rotateZ(0deg);;
+    }
+    to {
+        transform: rotateZ(180deg);;
+    }
 }
 .overlay {
     background-color: black;
@@ -67,21 +65,34 @@ svg {
     width: 100vw;
     height: 100vh;
     display: none;
-    z-index: 9999;
+    z-index: 9998;
+}
+
+.croix {
+    display: none;
+    cursor: pointer;
+    position: absolute;
+    right:  0;
+    top: 0;
 }
 
 /* HOME PAGE */
 
 
 /* NavBar */
+header {
+    position: relative;
+    z-index: 9999;
+    
+}
 #logo {
     max-width:64px;
     height: auto;
 }
-nav {
+.navigation {
     background-color: #D9D9D9;
 }
-li {
+.lien {
     margin-right: 40px;
 }
 li:hover {
@@ -101,55 +112,39 @@ main {
     align-items: center;
     margin-top: 40px;
 }
-
 .box {
     height: auto;
-    max-width: 800px;
+    max-width: 733px;
     position: relative;
     background-color: #CC5C00;
     border-radius: 10px;
 }
 #position-titre {
-    margin-top: -3%;
+    margin-top: -20px;
 }
 .photo {
-    grid-area: 1/1/3/2;
-    display: flex; /* Utilizza Flexbox per centrare l'immagine */
-    align-items: center; /* Centra verticalmente l'immagine */
-    justify-content: center; /* Centra orizzontalmente l'immagine */
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-.photo img{
-    width: 100%;
-    height: 100%;
+    grid-area: 1 / 1 / 3 / 2;
 }
 .griding {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr auto auto;
-    padding: 3%;
-    gap: 3%;
+    grid-template-rows: 1fr 1fr;
 }
 
-#desRicettes{display: none;}
-#desRicettes {
-    opacity: 0;
-    transition: opacity 2s ease-out;
-}
-
-#desRicettes.mostra {
-    display: block;
-    opacity: 1;
-}
 
 /* FORM */
+.flexing {
+    display: flex;
+    flex-direction: column;
+}
+
 #search-title {
     margin-top: 25px;
 }
 input{
     border-radius: 45px;
+    border: none;
+    outline: 0;
 }
 span {
     cursor: pointer;
@@ -162,7 +157,7 @@ span {
 .form-control {
     background-color: #CC5C00;
     border: none;
-    border-radius: 45px;
+    border-radius: 3px;
     opacity: 0.5;
 }
 .form-control:focus {
@@ -170,6 +165,25 @@ span {
     color: #FFF9EB;
     appearance: none;
     opacity: 1;
+}
+.result-box {
+    background-color: #CC5C00;
+    max-width: 89%;
+    border-radius:0px 0px 45px 0px;
+    display: none;
+    
+}
+.result-box ul li {
+    list-style: none;
+    cursor: pointer;
+    padding: 8px 3px;
+    max-width: 95%;
+    border-radius: 5px;
+}
+.result-box ul li:hover {
+    background-color: #ffb070;
+    color: #fff9eb;
+    
 }
 
 /* HOME PAGE */
@@ -181,9 +195,48 @@ span {
     grid-template-columns: repeat(3,1fr);
     grid-template-rows: repeat(3,1fr);
     background-color: #CC5C00;
-    width: 90vw;
-    height: 90vh;
+    width: auto;
+    height: auto;
+    overflow: hidden;
+    gap: 20px;
+    padding: 15px;
 }
 .page2 {
     height: 100%;
+}
+.img-grid {
+    height: 300px;
+    width: 300px;
+    object-fit: cover;
+    transition: 0.5s all ease-in-out;
+    cursor: pointer;
+}
+.flow:hover img {
+    transform: scale(1.25);
+}
+.flow {
+    overflow: hidden;
+}
+
+
+/* PAGINATION */
+.paging{
+    position: relative;
+    right: 18%;
+}
+.page-link {
+    border-radius: 45px;
+    background-color: #D9D9D9;
+    color: black;
+}
+.load {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: none;
+}
+.spinner-grow {
+    width: 500px;
+    height: 500px;
 }
