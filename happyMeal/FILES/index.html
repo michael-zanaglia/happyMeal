@@ -29,7 +29,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
               </svg>    
             <div class="acceuil-ligne mx-5 border-bottom" style="display: flex; align-items: center; justify-content: center;">
-                <h1 id="position-titre" class="custom-h1">Recette aléatoire :</h1>
+                <h1 id="position-titre" class="custom-h1">Recette aléatoire : </h1>
             </div>
             <div class="griding">
 
@@ -37,7 +37,7 @@
                     <img src="../GRAPHICS/imgs/Salade César.jpg" alt="Salade César">
                 </div>
                 <div class="sous-titre">Ingredients :
-                    <ul> 
+                    <ul id="listIngredients"> 
                         <!-- Recuperer le valeur dans le json avec javascript -->
                         <!-- Il y a de ricette avec 7 ingredients, creer une for avec la creation de un li pour chaque elements -->
                     </ul>
@@ -50,7 +50,6 @@
             </div>
             <div id="desRicettes">
                 <ol id="proRicettes"><!-- Recuperer le valeur dans le json avec javascript -->
-                    <li></li>
                 </ol>
             </div>
         </div>
@@ -75,6 +74,70 @@
             document.getElementById("desRicettes").classList.toggle("mostra");
         });
 
+        function creatElemIng(ingredients) {
+            const listIng = document.getElementById("listIngredients");
+            ingredients.forEach(ingrediente => {
+                const elemIngrediente = document.createElement('li');
+                elemIngrediente.textContent = ingrediente.nom;
+                listIng.appendChild(elemIngrediente);
+            });
+        }
+
+        function creatElemPlat(ricettes) {  
+            const nomR = ricettes.nom;
+            const catR = ricettes.categorie;
+            const temPreR = ricettes.temps_preparation;
+
+            let titoloPlat = document.getElementById('position-titre');
+            titoloPlat.textContent += nomR;
+            const imgElement = document.querySelector('.photo img');
+            imgElement.src = "../GRAPHICS/imgs/" +nomR+ ".jpg";
+            imgElement.alt = nomR;
+        }
+
+        function descriptionRicettes(ricettes){
+            const descR = ricettes.etapes;
+            const descElement = document.getElementById("proRicettes");
+            descR.forEach(instructions =>{
+                const instructionsForm = instructions.split(',').map(instructions => instructions.trim());
+                instructionsForm.forEach(instForm => {
+                    const stepInst = document.createElement('li');
+                    stepInst.textContent = instForm;
+                    descElement.appendChild(stepInst);
+                })
+            })
+        }
+
+
+        function getPlatCasual(ricettes) {
+            const indList = Math.floor(Math.random() * ricettes.length);
+            const platCasuale = ricettes[indList];
+            const ingredients = platCasuale.ingredients;
+            creatElemIng(ingredients);
+            creatElemPlat(platCasuale);
+            descriptionRicettes(platCasuale)
+        }
+
+        fetch("../SOURCE/data.json")
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Error: " + response.status);
+                }
+                return response.json(); // Converti la risposta in JSON
+            })
+            .then(data => {
+                const ricettes = data.recettes;
+                getPlatCasual(ricettes); // Passa i dati delle ricette alla funzione
+            })
+            .catch(error => {
+                console.error('Si è verificato un errore:', error);
+            });
+
+
+
+
+
+
 
         // // Supponiamo che il JSON sia stato già caricato in una variabile chiamata "ricette"
 
@@ -90,6 +153,8 @@
         //     nuovoElementoLi.textContent = ricetta.nome; // Supponendo che il nome della ricetta sia nel campo "nome" del JSON
         //     listaRicetteElemento.appendChild(nuovoElementoLi);
         // });
+
+
     </script>
 </body>
 </html>

@@ -67,9 +67,10 @@
         #btnDownload{margin-left: auto;}
         #btnVp{width: 90px; height: 35px; margin: 15px;}
         #btnVp h1{font-size: 16px;}
-        #btnTrash{margin: 0 0 0 auto; width: 50px; height: 40px; }
-        #quantIng{font-size: 26px;}
+        #btnTrash{margin: 0 0 0 auto; width: 50px; height: 40px;}
+        #quantIng{font-size: 26px; cursor: text}
         #nomIng{font-size: 40px;}
+        .btnH:hover{cursor: pointer; opacity: 0.7; border:1px solid white;}
 
         .contIng{text-align: center;}
         .test{
@@ -181,7 +182,7 @@
 <body>
     <header>
         <nav class="d-flex justify-content-between">
-            <img id="logo" src="/JavaScript/happyMeal/GRAPHICS/imgs/logo.png" alt="Logo-happyMeal">
+            <img id="logo" src="../GRAPHICS/imgs/logo.png" alt="Logo-happyMeal">
             <ul class="d-flex flex-row align-items-center navbar-nav">
                 <li><a class="nav-link" href="index.html">Home</a></li>
                 <li><a class="nav-link" href="recipe.html">Les recettes</a></li>
@@ -200,15 +201,15 @@
                 </div>
                 <div class="col information">
                     <h1 id="nom">Tiramisu</h1> 
-                    <button id="btnVp" type="button" class="btn btn-outline-light"><h1>Voir plus</h1></button>
+                    <button id="btnVp" type="button" class="btn btn-outline-light btnH"><h1>Voir plus</h1></button>
                     <div class="col test">
                         <div >
-                            <svg id="btnDownload" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                            <svg id="btnDownload" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 btnH">
                                 <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
                             </svg>
                         </div>
                         <div>
-                            <svg id="btnDownload" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                            <svg id="btnDownload" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 btnH">
                                 <path d="M3.375 3C2.339 3 1.5 3.84 1.5 4.875v.75c0 1.036.84 1.875 1.875 1.875h17.25c1.035 0 1.875-.84 1.875-1.875v-.75C22.5 3.839 21.66 3 20.625 3H3.375Z" />  
                                 <path fill-rule="evenodd" d="m3.087 9 .54 9.176A3 3 0 0 0 6.62 21h10.757a3 3 0 0 0 2.995-2.824L20.913 9H3.087ZM12 10.5a.75.75 0 0 1 .75.75v4.94l1.72-1.72a.75.75 0 1 1 1.06 1.06l-3 3a.75.75 0 0 1-1.06 0l-3-3a.75.75 0 1 1 1.06-1.06l1.72 1.72v-4.94a.75.75 0 0 1 .75-.75Z" clip-rule="evenodd" />
                             </svg>
@@ -231,7 +232,7 @@
                                 <span id="quantIng">qte. 2</span> 
                             </div>
                             <div class="col test">
-                                <svg id="btnTrash" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+                                <svg id="btnTrash" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3 btnH" viewBox="0 0 16 16">
                                         <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
                                 </svg>
                             </div>
